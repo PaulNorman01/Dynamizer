@@ -22,9 +22,9 @@ Modules Were Selected Carefully To avoid Possible Conflicts With Your Codes So I
 ``` 
 void SomeFunction(SomeParameters)
 {
-WALKER;  <------
+  WALKER;  <------
 
-//Rest Of The Code...
+  //Rest Of The Code...
 }
 ```
 
@@ -33,8 +33,34 @@ WALKER;  <------
 ``` 
 void SomeFunction(SomeParameters)
 {
-std::cout << StringKrypt("12345!");  <------
+  std::cout << StringKrypt("12345!");  <------
 
-//Rest Of The Code...
+  //Rest Of The Code...
+}
+```
+
+
+
+__StringKrypt("") / StringKrypt(L"") Can Be Used In Functions Too!__
+
+```
+int main()
+{
+  if (strcmp((char*)hookedSectionHeader->Name, StringKrypt(".text")) == 0)
+    //Do Something
+  
+  //Rest Of The Code
+}
+```
+
+### Using Anti Debug Modules
+
+``` 
+BOOL SomeFunction(void)
+{
+&emsp;EventCtrlFunction();
+	handleException();
+	StopHardwareDebugger(thrd);
+	AntiStep();
 }
 ```
