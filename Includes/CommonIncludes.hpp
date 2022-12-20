@@ -1780,7 +1780,7 @@ void StopFunction()
     */
 
 
-    std::cout << "Here is my CRC: " << crc << std::endl;
+    //std::cout << "Here is my CRC: " << crc << std::endl; 
 
 	while (1)
 	{
