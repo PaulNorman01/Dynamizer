@@ -17,7 +17,10 @@ Modules Were Selected Carefully To avoid Possible Conflicts With Your Codes So I
 
 ## Documentation
 
-*You Are Not Forced To Use All of These Modules In Your code. Choose Any of Them That Suits You Better.*
+### General Usage
+__Copy Both .hpp Files To Your Project Directory And Insert `#include "CommonIncludes.hpp"` In Your Main.cpp File.__
+
+*You Are Not Forced To Use All of The Below Modules In Your Coding Project. Choose Any of The Followings That Suits You The Best.*
 
 ### Using Return Address Manipulator
 
@@ -101,8 +104,8 @@ void SomeFunction()
 
 	std::vector<const wchar_t*> dllsToUnhook
 	{
-		StringKrypt(L"ntdll.dll"),
-		StringKrypt(L"kernel32.dll")
+		StringKrypt(L"ntdll.dll"),	<-------  Or Any Other System DLL Files.
+		StringKrypt(L"kernel32.dll")	<--------
 	};
 
 
@@ -114,3 +117,27 @@ void SomeFunction()
 	//Rest Of The Code...
 }
 ```
+
+### Using CRC Check
+Follow The Below Steps To Get It Done.
+
+1. Right Click On Your Project In Visual Studio, Select `Properties > Linker > General > Enable Incremental Linking` And Set It To `No`.
+
+2. Choose Any Function That You Intend To Apply CRC Check On It. You Cannot Choose Main Function Though.
+
+3. Insert The Following Code Right At The End Of That Function Block.
+```
+VOID DebuggeeFunctionEnd()
+{
+};
+```
+
+4. Navigate To The `void StopFunction()` Which Is located At The End of The `CommonIncludes.hpp` File. 
+
+5. Replace `xxxxxxx` In `DWORD crc = CalcFuncCrc((PUCHAR)xxxxxxx, (PUCHAR)DebuggeeFunctionEnd);` With The Name Of The Function That You Are Intending To Protect.
+
+6. Uncomment The `std::cout << "Here is my CRC: " << crc << std::endl;` Statement In The Same `StopFunction()`. Run The Program And Convert The Printed CRC To Hex.
+
+7. Navigate To The Top Of The `CommonIncludes.hpp` File, Replace `0000` in `DWORD g_origCrc = 0x0000;` With Your Hexadecimal CRC And Comment The Above Line Again.
+
+___In Order To Make The CRC Check More Effective, You Have To Run It Through A Parallel Process Which Has Been Explained Already.___
