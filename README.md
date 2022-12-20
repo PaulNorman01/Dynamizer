@@ -17,6 +17,8 @@ Modules Were Selected Carefully To avoid Possible Conflicts With Your Codes So I
 
 ## Documentation
 
+*You Are Not Forced To Use All of These Modules In Your code. Choose Any of Them That Suits You Better.*
+
 ### Using Return Address Manipulator
 
 ``` 
