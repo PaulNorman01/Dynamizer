@@ -58,9 +58,57 @@ int main()
 ``` 
 BOOL SomeFunction(void)
 {
-&emsp;EventCtrlFunction();
+	EventCtrlFunction();
 	handleException();
 	StopHardwareDebugger(thrd);
 	AntiStep();
+	
+	//Rest Of The Code...
+}
+```
+__StopHardwareDebugger(thrd) Requires A Handle To A Thread Of Your Choosing. You Can Easily Use Something Like ` HANDLE thrd = GetCurrentThread(); ` And Send Its value To The StopHardwareDebugger Function.__
+
+### Using All Anti-Debug Modules In a Parallel Thread
+
+```
+int main(int argc, char *argv[])
+{
+	HANDLE thrd = GetCurrentThread();
+	std::vector<std::thread> threads2;
+	threads2.push_back(std::thread(GoThroughAllAnnoyers, thrd));
+	Sleep(2000);
+	
+	//Rest Of The Code...
+	//...
+	//...
+	//Joining Threads...
+	
+	for (auto& thread : threads2) {
+		thread.join();
+	}
+	
+	//Rest Of The Code...
+}
+```
+
+### Using Unhooker
+
+```
+void SomeFunction()
+{
+
+	std::vector<const wchar_t*> dllsToUnhook
+	{
+		StringKrypt(L"ntdll.dll"),
+		StringKrypt(L"kernel32.dll")
+	};
+
+
+	for (auto dll : dllsToUnhook)
+	{
+		UnhookDll(dll);
+	}
+	
+	//Rest Of The Code...
 }
 ```
