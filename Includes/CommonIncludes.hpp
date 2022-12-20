@@ -1786,15 +1786,14 @@ void StopFunction()
 	{
 		DWORD crc = CalcFuncCrc((PUCHAR)xxxxxxx, (PUCHAR)DebuggeeFunctionEnd);
 
-		//dont remove, commented so i can test other stuff
-		/*
+
 
 		if (g_origCrc != crc)
 		{
-			std::cout << "\nStop debugging me!: " << crc << std::endl;
+			std::cout << "\nStop debugging me!: " << std::endl; //CHANGE ME TO SOMETHING LESS SUSPICIOUS!
 			Sleep(2000);
 			exit(0);
 		}
-		*/
+		
 	}
 }
