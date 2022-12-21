@@ -140,7 +140,7 @@ VOID DebuggeeFunctionEnd()
 
 7. Navigate To The Top Of The `CommonIncludes.hpp` File, Replace `0000` in `DWORD g_origCrc = 0x0000;` With Your Hexadecimal CRC And Comment The Above Line Again.
 
-___In Order To Make The CRC Check More Effective, You Have To Run It Through A Parallel Process Which Has Been Explained Already.___
+___In Order To Make The CRC Check More Effective, You Have To Run It Through A Parallel Thread Which Has Been Explained Already.___
 
 
 ## Credits
